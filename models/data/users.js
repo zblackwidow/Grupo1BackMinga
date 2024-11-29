@@ -1,5 +1,5 @@
 import 'dotenv/config.js'
-import '../../config/conexionDataBase.js'
+import '../../config/database.js'
 import User from '../User.js'
 
 const users = [
