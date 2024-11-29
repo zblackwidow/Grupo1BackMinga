@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import "./User.js";
+
 
 let collection = "companies"
 
