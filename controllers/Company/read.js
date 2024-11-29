@@ -10,4 +10,14 @@ let readAllCompany = async (req, res, next) => {
     }
 }
 
-export default readAllCompany;
+let readCompany = async (req, res, next) => {
+    try {
+        const company = await Company.findById(req.params.id);
+        return res.status(200).json({ response: company });
+    }
+    catch (error) {
+        next(error);
+    }
+}
+
+export default {readAllCompany, readCompany};
