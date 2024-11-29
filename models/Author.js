@@ -7,6 +7,7 @@ let schema = new Schema({
         lastName:{type: String, required: true},
         city:{type: String, required: true},
         country:{type: String, required: true},
+
         date:{type: Date, required: true},
         photo:{type: String, required: true},
         user_id:{type: Schema.Types.ObjectId, required: true},
