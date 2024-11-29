@@ -1,6 +1,6 @@
 import User from '../../models/User.js'
 
-let register = async (req, res, next) => {
+let create = async (req, res, next) => {
     try {
         let user = req.body
         user.online = false
