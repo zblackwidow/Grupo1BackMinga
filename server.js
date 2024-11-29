@@ -3,7 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import "dotenv/config.js";
 import "./config/database.js";
-// import indexRouter from "./router/index.js";
+import indexRouter from "./router/index.js";
 // import not_found_handler from "./middleware/not_found_handler.js";
 // import error_handler from "./middleware/error_handler.js";
 
