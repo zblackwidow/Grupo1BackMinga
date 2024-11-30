@@ -10,10 +10,10 @@ let allAuthors = async(req,res,next) => {
                 let query = {}
                 
                 if (name){
-                        query.name = {regex: '^'+name, $options: 'i'}
+                        query.name = {$regex: '^'+name, $options: 'i'}
                 }
 
-                let all = await Author.find(query).populate('users', 'email photo role online').exec()
+                let all = await Author.find(query).populate('user_id', 'email photo role online').exec()
                 return res.status(200).json({
                         response: all
                 })
@@ -23,4 +23,19 @@ let allAuthors = async(req,res,next) => {
         }
 }
 
-export default allAuthors
+let authorById = async(req, res, next) => {
+
+        try {
+                let idQuery = req.params.id
+                let author = await Author.findById(idQuery)
+                return res.status(200).json({
+                        response: author
+                })
+        } catch (error) {
+                next(error)
+        }
+
+}
+
+
+export  {allAuthors,authorById}
