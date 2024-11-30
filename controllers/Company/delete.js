@@ -4,9 +4,9 @@ import Company from "../../models/Company.js";
 const deleteCompany = async (req, res, next) => {
     try {
         const company = await Company.findByIdAndDelete(
-            { _id: req.params.id }
+            { _id: req.body._id }
         )
-        return res.status(200).json({ response: company });
+        return res.status(200).json({ message: "Company deleted successfully", response: company });
     }
     catch (error) {
         next(error);
