@@ -6,7 +6,7 @@ let schema = new Schema({
         manga_id: { type: Schema.Types.ObjectId, required: true },
         title: {type: String, required: true},
         coverPhoto: {type: String, required: true},
-        pages:{type: String, required: true},
+        pages:{type: [String], required: true},
         order: {type: Number, required: true},     
 },
 {
