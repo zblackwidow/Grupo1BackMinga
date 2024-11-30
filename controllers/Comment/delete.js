@@ -3,7 +3,7 @@ import Comment from '../../models/Comment.js'
 let destroy = async (req, res, next) => {
     try {
         let result = await Comment.findOneAndDelete(
-            { _id: req.params.id }
+            { _id: req.body._id }
         )
         if (result) {
             return res.status(200).json({
