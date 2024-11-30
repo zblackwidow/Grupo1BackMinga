@@ -9,7 +9,8 @@
     "dev": "nodemon ./server.js",
     "dataUser": "node ./models/data/users.js",
     "dataComment": "node ./models/data/comments.js",
-    "dataCompany": "node ./models/data/companies.js"
+    "dataCompany": "node ./models/data/companies.js",
+    "dataAuthor": "node ./models/data/authors.js"
   },
   "keywords": [],
   "author": "",
