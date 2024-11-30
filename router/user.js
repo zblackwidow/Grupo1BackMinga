@@ -5,10 +5,10 @@ import { update } from '../controllers/User/update.js'
 import { destroy } from '../controllers/User/delete.js'
 import accountExists from '../middleware/accountExist.js'
 import validatorAccount from '../middleware/validatorAccount.js'
-import validatorSchema from '../middleware/validatorSchema.js'
 import schemaUserCreate from '../schemas/User/create.js'
 import schemaUserEmail from '../schemas/User/delete.js'
 import schemaUserUpdate from '../schemas/User/update.js'
+import {validator} from '../middleware/validator.js'
 
 const userRouter = Router()
 
@@ -17,18 +17,18 @@ userRouter.get('/all', allUser)
 userRouter.get('/id/:valueID', userByID)
 
 // create
-userRouter.post('/create', validatorSchema(schemaUserCreate), accountExists, create)
+userRouter.post('/create', validator(schemaUserCreate), accountExists, create)
 
 // update
 userRouter.put(
     '/update',
-    validatorSchema(schemaUserEmail),
+    validator(schemaUserEmail),
     validatorAccount,
-    validatorSchema(schemaUserUpdate),
+    validator(schemaUserUpdate),
     update
 )
 
 // delete
-userRouter.delete('/destroy', validatorSchema(schemaUserEmail), validatorAccount, destroy)
+userRouter.delete('/destroy', validator(schemaUserEmail), validatorAccount, destroy)
 
 export default userRouter
