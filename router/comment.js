@@ -5,10 +5,10 @@ import { update } from '../controllers/Comment/update.js'
 import { destroy } from '../controllers/Comment/delete.js'
 import commentExists from '../middleware/commentExist.js'
 import validatorComment from '../middleware/validatorComment.js'
-import validatorSchema from '../middleware/validatorSchema.js'
 import schemaCommentCreate from '../schemas/Comment/create.js'
 import schemaCommentID from '../schemas/Comment/delete.js'
 import schemaCommentUpdate from '../schemas/Comment/update.js'
+import {validator} from '../middleware/validator.js'
 
 const commentRouter = Router()
 
@@ -17,18 +17,18 @@ commentRouter.get('/all', allComment)
 commentRouter.get('/id/:valueID', commentByID)
 
 // create
-commentRouter.post('/create', validatorSchema(schemaCommentCreate), commentExists, create)
+commentRouter.post('/create', validator(schemaCommentCreate), commentExists, create)
 
 // update
 commentRouter.put(
     '/update',
-    validatorSchema(schemaCommentID),
+    validator(schemaCommentID),
     validatorComment,
-    validatorSchema(schemaCommentUpdate),
+    validator(schemaCommentUpdate),
     update
 )
 
 // delete
-commentRouter.delete('/destroy', validatorSchema(schemaCommentID), validatorComment, destroy)
+commentRouter.delete('/destroy', validator(schemaCommentID), validatorComment, destroy)
 
 export default commentRouter
