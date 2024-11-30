@@ -4,6 +4,7 @@ const schema = joi.object({
     email: joi
         .string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+        .required()
         .messages({
             'string.email': 'Please enter a valid email address - .com or .net',
         }),

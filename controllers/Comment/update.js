@@ -3,7 +3,7 @@ import Comment from '../../models/Comment.js'
 let update = async (req, res, next) => {
     try {
         let result = await Comment.findOneAndUpdate(
-            { email: req.body.email },
+            { _id: req.body._id },
             req.body,
             { new: true } 
         )
