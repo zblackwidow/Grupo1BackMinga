@@ -1,4 +1,4 @@
-export const validator = (schema) => [
+ const validator = (schema) => [
     (req, res, next) => {
         const validation = schema.validate(req.body, {
             abortEarly: false,
@@ -14,7 +14,8 @@ export const validator = (schema) => [
     }
 ]
 
-export const validatorParams = (schema) => [
+
+ const validatorParams = (schema) => [
     (req, res, next) => {
         const validation = schema.validate(req.params, {
             abortEarly: false,
@@ -29,3 +30,5 @@ export const validatorParams = (schema) => [
         return next();
     }
 ]
+
+export {validator, validatorParams};
