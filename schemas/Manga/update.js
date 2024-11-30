@@ -1,6 +1,6 @@
 import joi from "joi-oid";
 
-export const schemaCreateManga = joi.object({
+export const schemaUpdateManga = joi.object({
   title: joi.string().optional().messages({
     "string.empty": "Title cannot be empty",
   }),
