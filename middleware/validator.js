@@ -14,7 +14,6 @@
     }
 ]
 
-
  const validatorParams = (schema) => [
     (req, res, next) => {
         const validation = schema.validate(req.params, {
@@ -31,5 +30,7 @@
     }
 ]
 
+
 export {validator, validatorParams};
+
 

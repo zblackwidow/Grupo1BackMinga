@@ -6,7 +6,7 @@ const schema = joi.object({
         .regex(/^[0-9a-fA-F]{24}$/)
         .required()
         .messages({
-            'string.pattern.base': 'You must enter a valid ObjectId',
+            'string.pattern.base': '"chapter_id" You must enter a valid ObjectId',
             'any.required': `"chapter_id" is a required field`,
         }),
     author_id: joi
@@ -14,7 +14,7 @@ const schema = joi.object({
         .regex(/^[0-9a-fA-F]{24}$/)
         .required()
         .messages({
-            'string.pattern.base': 'You must enter a valid ObjectId',
+            'string.pattern.base': '"author_id" You must enter a valid ObjectId',
             'any.required': `"author_id" is a required field`,
         }),
     company_id: joi
@@ -22,7 +22,7 @@ const schema = joi.object({
         .regex(/^[0-9a-fA-F]{24}$/)
         .required()
         .messages({
-            'string.pattern.base': 'You must enter a valid ObjectId',
+            'string.pattern.base': '"company_id" You must enter a valid ObjectId',
             'any.required': `"company_id" is a required field`,
         }),
     message: joi
@@ -32,7 +32,7 @@ const schema = joi.object({
         .min(3)
         .alphanum()
         .messages({
-            'string.base': 'Do not use numbers',
+            'string.base': '"message" Do not use numbers',
             'string.pattern.base': '"message" Do not use numbers and use special characters',
             'string.min': '"message" Must be a minimum of 3 characters',
         }),
