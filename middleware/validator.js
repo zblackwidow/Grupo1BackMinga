@@ -14,6 +14,10 @@
     }
 ]
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin
  const validatorParams = (schema) => [
     (req, res, next) => {
         const validation = schema.validate(req.params, {
@@ -30,4 +34,8 @@
     }
 ]
 
+<<<<<<< HEAD
 export { validator, validatorParams }
+=======
+export {validator, validatorParams};
+>>>>>>> origin
