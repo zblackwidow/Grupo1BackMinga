@@ -8,14 +8,14 @@ let allComment = async (req, res, next) => {
                 success: true,
                 message: 'Records found with SUCCESS',
                 registers_found: `${resultado.length}`,
-                data: resultado,
+                response: resultado,
             })
         } else {
             return res.status(200).json({
                 success: false,
-                message: `No Comment Record Found in Database`,
+                message: `No Comment Record Found in responsebase`,
                 registers_found: `${resultado.length}`,
-                data: resultado,
+                response: resultado,
             })
         }
     } catch (error) {
@@ -32,14 +32,14 @@ let commentByID = async (req, res, next) => {
                 success: true,
                 message: 'Record found SUCCESSFULLY',
                 registers_found: `${resultado.length}`,
-                data: resultado,
+                response: resultado,
             })
         } else {
             return res.status(200).json({
                 success: false,
-                message: `No Record Found in Database with: ${valueID}`,
+                message: `No Record Found in responsebase with: ${valueID}`,
                 registers_found: `${resultado.length}`,
-                data: resultado,
+                response: resultado,
             })
         }
     } catch (error) {
