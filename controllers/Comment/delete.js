@@ -10,14 +10,14 @@ let destroy = async (req, res, next) => {
                 success: true,
                 message: 'Deleted Comment with SUCCESS',
                 registers_found: `${result._id}`,
-                data: result,
+                response: result,
             })
         } else {
             return res.status(200).json({
                 success: false,
                 message: `could not delete Comment`,
                 registers_found: `${result._id}`,
-                data: result,
+                response: result,
             })
         }
     } catch (error) {
