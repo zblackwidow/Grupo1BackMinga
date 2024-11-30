@@ -1,15 +1,28 @@
 import { Router } from "express";
+import { readAllCompany, readCompany } from "../controllers/Company/read.js";
 import createCompany from "../controllers/Company/create.js";
-// import updateCompany from "../controllers/company.js";
-// import deleteCompany from "../controllers/company.js";
-import readAllCompany from "../controllers/Company/read.js";
+import deleteCompany from "../controllers/Company/delete.js";
+import { updateActive, updateName, updateDescription, updateWebsite, updatePhoto } from "../controllers/Company/update.js";
 
 
 const companyRouter = Router();
-
+// crear una compania
 companyRouter.post("/create", createCompany);
-// companyRouter.put("/update/:id", updateCompany);
-// companyRouter.delete("/delete/:id", deleteCompany);
-companyRouter.get("/all", readAllCompany);  
+// borrar una compania
+companyRouter.delete("/delete/:id", deleteCompany);
+// leer todas las companias
+companyRouter.get("/all", readAllCompany);
+// leer una compania
+companyRouter.get("/read/:id", readCompany);
+// actualizar el active de una compania
+companyRouter.put("/update/active/:id", updateActive);
+// actualizar el nombre de una compania
+companyRouter.put("/update/name/:id", updateName);
+// actualizar la descripcion de una compania
+companyRouter.put("/update/description/:id", updateDescription);
+// actualizar el website de una compania
+companyRouter.put("/update/website/:id", updateWebsite);
+// actualizar la foto de una compania
+companyRouter.put("/update/photo/:id", updatePhoto);
 
 export default companyRouter;

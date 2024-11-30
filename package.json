@@ -10,7 +10,8 @@
     "dataUser": "node ./models/data/users.js",
     "dataComment": "node ./models/data/comments.js",
     "dataCompany": "node ./models/data/companies.js",
-    "dataAuthor": "node ./models/data/authors.js"
+    "dataManga": "node ./models/data/mangas.js",
+    "dataCategory": "node ./models/data/categories.js"
   },
   "keywords": [],
   "author": "",
