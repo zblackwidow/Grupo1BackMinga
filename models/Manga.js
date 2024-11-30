@@ -3,12 +3,12 @@ import { Schema, model } from "mongoose";
 let collection = "mangas";
 let schema = new Schema(
   {
-    author_id: { type: Schema.Types.ObjectId, ref: "author" },
-    company_id: { type: Schema.Types.ObjectId, ref: "company" },
     title: { type: String, required: true },
-    cover_photo: { type: URL, required: true },
+    cover_photo: { type: String, required: true },
     description: { type: String, required: true },
-    category_id: { type: Schema.Types.ObjectId, ref: "category" },
+    author_id: { type: Schema.Types.ObjectId, ref: "Author" },
+    company_id: { type: Schema.Types.ObjectId, ref: "Company" },
+    category_id: { type: Schema.Types.ObjectId, ref: "Category" , required: true},
   },
 
   {
