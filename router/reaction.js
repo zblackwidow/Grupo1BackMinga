@@ -7,13 +7,38 @@ import { validator } from "../middleware/validator.js";
 import { schemaDeleteReaction } from "../schemas/Reaction/delete.js";
 import { schemaCreateReaction } from "../schemas/Reaction/create.js";
 import { schemaUpdateReaction } from "../schemas/Reaction/update.js";
+import passport from "../middleware/passport.js";
 
-const router = Router();    
+const router = Router();
 
-router.get("/all", reactionAll)
-router.get("/id/:id",validator(schemaDeleteReaction), reactionById)
-router.post("/create",validator(schemaCreateReaction), createReaction)
-router.put("/update", validator(schemaUpdateReaction) ,updateReaction)
-router.delete("/delete", validator(schemaDeleteReaction), deleteReaction)
+router.get(
+  "/all",
+  passport.authenticate("jwt", { session: false }),
+  reactionAll
+);
+router.get(
+  "/id/",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaDeleteReaction),
+  reactionById
+);
+router.post(
+  "/create",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaCreateReaction),
+  createReaction
+);
+router.put(
+  "/update",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaUpdateReaction),
+  updateReaction
+);
+router.delete(
+  "/delete",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaDeleteReaction),
+  deleteReaction
+);
 
-export default router
+export default router;
