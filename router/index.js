@@ -5,7 +5,7 @@ import commentRouter from "./comment.js";
 import authorRouter from "./author.js";
 import mangaRouter from "./manga.js";
 import categoryRouter from "./category.js"
-
+import routerReaction from "./reaction.js"
 
 const indexRouter = Router();
 
@@ -15,6 +15,7 @@ indexRouter.use("/comment", commentRouter);
 indexRouter.use("/author", authorRouter);
 indexRouter.use("/manga", mangaRouter);
 indexRouter.use("/category", categoryRouter)
+indexRouter.use("/reaction", routerReaction)
 
 
 export default indexRouter;
