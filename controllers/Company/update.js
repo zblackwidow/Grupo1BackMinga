@@ -46,7 +46,7 @@ let updateWebsite = async (req, res, next) => {
             { _id: company._id },
             {  website: company.website }
         );
-        return res.status(200).json({ response: updatedCompany });
+        return res.status(200).json({message: "Company updated successfully", response: updatedCompany});
     }
     catch (error) {
         next(error);
