@@ -16,6 +16,27 @@ const users = [
         photo: 'https://static.vecteezy.com/system/resources/previews/048/888/157/non_2x/portrait-of-a-young-man-with-a-serious-expression-photo.jpg',
         role: '0',
         online: false
+    },
+    { 
+        email: 'eric@example.com',
+        password: 'pass123',
+        photo: 'https://static.vecteezy.com/system/resources/previews/048/888/157/non_2x/portrait-of-a-young-man-with-a-serious-expression-photo.jpg',
+        role: '0',
+        online: false
+    },
+    { 
+        email: 'alejandro@example.com',
+        password: 'pass123',
+        photo: 'https://static.vecteezy.com/system/resources/previews/048/888/157/non_2x/portrait-of-a-young-man-with-a-serious-expression-photo.jpg',
+        role: '0',
+        online: false
+    },
+    { 
+        email: 'lucas@example.com',
+        password: 'pass123',
+        photo: 'https://static.vecteezy.com/system/resources/previews/048/888/157/non_2x/portrait-of-a-young-man-with-a-serious-expression-photo.jpg',
+        role: '0',
+        online: false
     }
 ]
 
