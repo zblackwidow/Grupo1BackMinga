@@ -30,7 +30,6 @@
     }
 ]
 
-
 export {validator, validatorParams};
 
 
