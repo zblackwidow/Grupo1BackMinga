@@ -9,26 +9,30 @@ import schemaUserCreate from '../schemas/User/create.js'
 import schemaUserEmail from '../schemas/User/delete.js'
 import schemaUserUpdate from '../schemas/User/update.js'
 import {validator} from '../middleware/validator.js'
+import passport from '../middleware/passport.js'
+import createHash from '../middleware/createHash.js'
+
+
 
 const userRouter = Router()
 
 // read
-userRouter.get('/all', allUser)
-userRouter.get('/id/:valueID', userByID)
+userRouter.get('/all', passport.authenticate('jwt', { session: false }), allUser)
+userRouter.get('/id/:valueID', passport.authenticate('jwt', { session: false }), userByID)
 
 // create
-userRouter.post('/create', validator(schemaUserCreate), accountExists, create)
+userRouter.post('/create', validator(schemaUserCreate), accountExists, createHash, create)
 
 // update
 userRouter.put(
-    '/update',
+    '/update', passport.authenticate('jwt', { session: false }),
     validator(schemaUserEmail),
     validatorAccount,
-    validator(schemaUserUpdate),
+    validator(schemaUserUpdate), createHash,
     update
 )
 
 // delete
-userRouter.delete('/destroy', validator(schemaUserEmail), validatorAccount, destroy)
+userRouter.delete('/destroy', passport.authenticate('jwt', { session: false }), validator(schemaUserEmail), validatorAccount, destroy)
 
 export default userRouter

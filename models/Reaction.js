@@ -6,7 +6,7 @@ let schema = new Schema(
         manga_id: { type: Schema.Types.ObjectId, ref: "Manga" },
         author_id: { type: Schema.Types.ObjectId, ref: "Author" },
         company_id: { type: Schema.Types.ObjectId, ref: "Company" },
-        reaction: { type: String, required: true },
+        reaction: { type: Number, required: true },
     },
     {
         timestamps: true,
