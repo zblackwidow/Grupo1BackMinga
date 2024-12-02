@@ -1,5 +1,4 @@
-
-import Chapter from "../../models/Chapter"
+import Chapter from "../../models/Chapter.js"
 
 let create = async (req , res , next) => {
 try {
