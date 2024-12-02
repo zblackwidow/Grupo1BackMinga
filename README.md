@@ -51,9 +51,17 @@ GOOGLE_URI_BACK="/api/auth/signIn/google/callback"
 
 ```
 npm run dataUser
+```
+```
 npm run dataComment
+```
+```
 npm run dataCompany
+```
+```
 npm run dataManga
+```
+```
 npm run dataCategory
 ```
 ---
