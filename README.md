@@ -1,5 +1,3 @@
-# Grupo1BackMinga
-
 # Grupo1BackMinga - BackEnd - Challenge Final
 
 ## **Pasos para Visualizar el Proyecto**
