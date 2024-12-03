@@ -8,6 +8,7 @@ let create = async (req, res, next) => {
         return res.status(201).json({
             success: true,
             message: 'User registered successfully',
+            token: req.token,
             response: all,
         })
     } catch (error) {
