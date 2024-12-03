@@ -7,13 +7,34 @@ import { validator, validatorParams } from "../middleware/validator.js";
 import { schemaReadManga } from "../schemas/Manga/read.js";
 import { schemaCreateManga } from "../schemas/Manga/create.js";
 import { schemaUpdateManga } from "../schemas/Manga/update.js";
+import passport from "../middleware/passport.js";
 
 const router = Router();
 
-router.get("/all", readAll )
-router.get("/mangaById/:id", validatorParams(schemaReadManga), readById)
-router.post("/create", validator(schemaCreateManga), createManga)
-router.put("/update",validator(schemaUpdateManga), updateManga)
-router.delete("/delete",validator(schemaReadManga), deleteManga)
+router.get("/all", passport.authenticate("jwt", { session: false }), readAll);
+router.get(
+  "/mangaById/:id",
+  passport.authenticate("jwt", { session: false }),
+  validatorParams(schemaReadManga),
+  readById
+);
+router.post(
+  "/create",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaCreateManga),
+  createManga
+);
+router.put(
+  "/update",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaUpdateManga),
+  updateManga
+);
+router.delete(
+  "/delete",
+  passport.authenticate("jwt", { session: false }),
+  validator(schemaReadManga),
+  deleteManga
+);
 
-export default router
+export default router;

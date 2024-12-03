@@ -1,6 +1,10 @@
 import joi from "joi-oid";
 
 export const schemaUpdateReaction = joi.object({
+  id: joi.objectId().required().messages({
+    "objectid.base": "Invalid ObjectId",
+    "any.required": "Reaction ID is required",
+  }),
   manga_id: joi.objectId().messages({
     "objectid.base": "Invalid ObjectId",
   }),

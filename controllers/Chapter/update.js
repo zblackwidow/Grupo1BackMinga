@@ -1,4 +1,4 @@
-import Chapter from "../../models/Chapter"
+import Chapter from "../../models/Chapter.js"
 
 const updateChapter = async (req, res, next) => {
         let chapter = req.body
