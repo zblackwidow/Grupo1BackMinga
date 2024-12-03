@@ -4,13 +4,10 @@ import read from "../controllers/Category/read.js";
 import update from "../controllers/Category/update.js";
 import remove from "../controllers/Category/delete.js";
 const router = express.Router();
-// Ruta de prueba
-router.get("/test", (req, res) => {
-    res.status(200).send("¡Rutas de categoría funcionando!");
-});
-router.post("/", create); // Crear categoría
-router.get("/", read); // Leer todas las categorías
-router.put("/:id", update); // Actualizar categoría por ID
-router.delete("/:id", remove); // Eliminar categoría por ID
+
+router.post("/create", create); // Crear categoría
+router.get("/all", read); // Leer todas las categorías
+router.put("/update", update); // Actualizar categoría por ID
+router.delete("/delete", remove); // Eliminar categoría por ID
 
 export default router;
