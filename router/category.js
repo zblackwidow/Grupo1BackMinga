@@ -10,9 +10,9 @@ import updateCategorySchema from '../schemas/Category/update.js'
 
 const router = express.Router();
 
-router.post("/create", create); // Crear categoría
+router.post("/create", validator(createCategorySchema), create); // Crear categoría
 router.get("/all", read); // Leer todas las categorías
-router.put("/update", update); // Actualizar categoría por ID
-router.delete("/delete", remove); // Eliminar categoría por ID
+router.put("/update", validator(updateCategorySchema), update); // Actualizar categoría por ID
+router.delete("/delete", validatorParams(deleteCategorySchema), remove); // Eliminar categoría por ID
 
 export default router;

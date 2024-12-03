@@ -1,6 +1,15 @@
 import Joi from "joi";
 
 const updateCategorySchema = Joi.object({
+    _id: Joi.string()
+        .length(24)
+        .hex()
+        .required() // El _id debe ser obligatorio para que funcione la actualización
+        .messages({
+            "string.length": "ID must be a valid 24-character ObjectId.",
+            "string.hex": "ID must be in hexadecimal format.",
+            "any.required": "ID is required for updating the category.",
+        }),
     name: Joi.string().min(3).max(50).messages({
         "string.min": "Name must have at least 3 characters.",
         "string.max": "Name must have at most 50 characters.",
@@ -34,7 +43,7 @@ const updateCategorySchema = Joi.object({
         })
         .optional(),
 }).messages({
-    "any.unknown": "Field {#label} is not allowed.",
+    "any.unknown": "Field {#label} is not allowed.", // Campo no permitido en la solicitud
 });
 
 export default updateCategorySchema;
