@@ -7,21 +7,22 @@ import { validator } from '../middleware/validator.js'
 import schemaChapterCreate from '../schemas/Chapter/create.js'
 import schemaChapterDelete from '../schemas/Chapter/delete.js'
 import schemaChapterUpdate from '../schemas/Chapter/update.js'
+import passport from '../middleware/passport.js'
 
 
 const chapterRouter = Router()
 
 // read
-chapterRouter.get('/all', allChapters)
-chapterRouter.get('/id/:id', chapterById)
+chapterRouter.get('/all',passport.authenticate('jwt', { session: false }), allChapters)
+chapterRouter.get('/id/:id',passport.authenticate('jwt', { session: false }), chapterById)
 
-// // create
-chapterRouter.post('/create',validator(schemaChapterCreate),create)
+// create
+chapterRouter.post('/create',passport.authenticate('jwt', { session: false }),validator(schemaChapterCreate),create)
 
 // update
-chapterRouter.put('/update',validator(schemaChapterUpdate),updateChapter)
+chapterRouter.put('/update',passport.authenticate('jwt', { session: false }),validator(schemaChapterUpdate),updateChapter)
 
 // delete
-chapterRouter.delete('/delete',validator(schemaChapterDelete),deleteChapter)
+chapterRouter.delete('/delete',passport.authenticate('jwt', { session: false }),validator(schemaChapterDelete),deleteChapter)
 
 export default chapterRouter
