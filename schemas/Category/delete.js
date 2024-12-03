@@ -1,9 +1,8 @@
-import Joi from "joi";
+import Joi from "joi-oid";
 
 const deleteCategorySchema = Joi.object({
-    id: Joi.string().length(24).required().messages({
-        "string.base": "ID must be a string.",
-        "string.length": "ID must be exactly 24 characters long.",
+    _id: Joi.objectId().required().messages({
+        "objectid.base": "ID must be a valid ObjectId.",
         "any.required": "ID is required.",
     }),
 });

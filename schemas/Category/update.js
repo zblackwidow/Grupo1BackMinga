@@ -1,6 +1,12 @@
-import Joi from "joi";
+import Joi from "joi-oid"; // Importamos joi-oid
 
 const updateCategorySchema = Joi.object({
+    _id: Joi.objectId() // Usamos .objectId() para validar el _id como un ObjectId
+        .required() // El _id debe ser obligatorio para que funcione la actualización
+        .messages({
+            "objectid.base": "ID must be a valid ObjectId.",
+            "any.required": "ID is required for updating the category.",
+        }),
     name: Joi.string().min(3).max(50).messages({
         "string.min": "Name must have at least 3 characters.",
         "string.max": "Name must have at most 50 characters.",
@@ -27,14 +33,11 @@ const updateCategorySchema = Joi.object({
     character_photo: Joi.string().uri().messages({
         "string.uri": "Character photo must be a valid URL.",
     }).optional(),
-    admin_id: Joi.string()
-        .pattern(/^[a-fA-F0-9]{24}$/)
-        .messages({
-            "string.pattern.base": "Admin ID must be a valid ObjectId.",
-        })
-        .optional(),
+    admin_id: Joi.objectId().optional().messages({
+        "objectid.base": "Admin ID must be a valid ObjectId.",
+    }),
 }).messages({
-    "any.unknown": "Field {#label} is not allowed.",
+    "any.unknown": "Field {#label} is not allowed.", // Campo no permitido en la solicitud
 });
 
 export default updateCategorySchema;
