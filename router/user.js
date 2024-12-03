@@ -11,6 +11,7 @@ import schemaUserUpdate from '../schemas/User/update.js'
 import {validator} from '../middleware/validator.js'
 import passport from '../middleware/passport.js'
 import createHash from '../middleware/createHash.js'
+import generateToken from '../middleware/generateToken.js'
 
 
 
@@ -21,7 +22,7 @@ userRouter.get('/all', passport.authenticate('jwt', { session: false }), allUser
 userRouter.get('/id/:valueID', passport.authenticate('jwt', { session: false }), userByID)
 
 // create
-userRouter.post('/create', validator(schemaUserCreate), accountExists, createHash, create)
+userRouter.post('/create', validator(schemaUserCreate), accountExists, createHash, generateToken, create)
 
 // update
 userRouter.put(
