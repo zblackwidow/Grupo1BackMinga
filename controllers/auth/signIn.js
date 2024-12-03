@@ -1,4 +1,4 @@
-import { token } from "morgan";
+
 import User from "../../models/User.js";
 
 export default async(req,res,next) => {
@@ -7,8 +7,6 @@ export default async(req,res,next) => {
             {email: req.body.email},
             {online: true}
         )
-        console.log(req);
-        console.log(req.user.name);
         
         return res.status(200).json({
             success: true,
