@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from "joi-oid"; // Usamos joi-oid para manejar ObjectId
 
 const createCategorySchema = Joi.object({
     name: Joi.string().required().messages({
@@ -35,14 +35,10 @@ const createCategorySchema = Joi.object({
         "string.empty": "Character photo URL cannot be empty.",
         "string.uri": "Character photo must be a valid URL.",
     }),
-    admin_id: Joi.string()
-        .pattern(/^[a-fA-F0-9]{24}$/)
-        .required()
-        .messages({
-            "any.required": "Admin ID is required.",
-            "string.empty": "Admin ID cannot be empty.",
-            "string.pattern.base": "Admin ID must be a valid ObjectId.",
-        }),
+    admin_id: Joi.objectId().required().messages({
+        "objectid.base": "Admin ID must be a valid ObjectId.",
+        "any.required": "Admin ID is required.",
+    }),
 });
 
 export default createCategorySchema;

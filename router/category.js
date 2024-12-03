@@ -13,6 +13,6 @@ const router = express.Router();
 router.post("/create", validator(createCategorySchema), create); // Crear categoría
 router.get("/all", read); // Leer todas las categorías
 router.put("/update", validator(updateCategorySchema), update); // Actualizar categoría por ID
-router.delete("/delete", validatorParams(deleteCategorySchema), remove); // Eliminar categoría por ID
+router.delete("/delete", validator(deleteCategorySchema), remove); // Eliminar categoría por ID
 
 export default router;
