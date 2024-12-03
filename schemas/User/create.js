@@ -9,7 +9,8 @@ const schema = joi.object({
             'string.email': 'Please enter a valid email address - .com or .net',
             'any.required': `"email" is a required field`,
         }),
-    password: joi.string().required().messages({
+    password: joi.string().required().min(8).messages({
+        'string.min': '"password" Password must contain at least 8 characters',
         'any.required': `"password" is a required field`,
     }),
     photo: joi.string().required().messages({
