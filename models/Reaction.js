@@ -1,4 +1,7 @@
 import { Schema, model } from "mongoose";
+import "./Manga.js";
+import "./Author.js";
+import "./Company.js";
 
 let collection = "reactions";
 let schema = new Schema(
