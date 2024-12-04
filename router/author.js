@@ -7,20 +7,23 @@ import { validator } from '../middleware/validator.js'
 import schemaAuthorCreate from '../schemas/Author/create.js'
 import schemaAuthorUpdate from '../schemas/Author/update.js'
 import schemaAuthorDelete from '../schemas/Author/delete.js'
+import passport from '../middleware/passport.js'
+import validateRole from '../middleware/validateRole.js'
+
 
 const authorRouter = Router()
 
 // read
-authorRouter.get('/all',allAuthors)
-authorRouter.get('/id/:id',authorById)
+authorRouter.get('/all',passport.authenticate('jwt', { session: false }),allAuthors)
+authorRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole,authorById)
 
-// // create
-authorRouter.post('/create',validator(schemaAuthorCreate),create)
+ // create
+authorRouter.post('/create',validateRole,create)
 
 // update
-authorRouter.put('/update',validator(schemaAuthorUpdate),updateAuthor)
+authorRouter.put('/update',passport.authenticate('jwt', { session: false }),validateRole,validator(schemaAuthorUpdate),updateAuthor)
 
 // delete
-authorRouter.delete('/delete',validator(schemaAuthorDelete),deleteAuthor)
+authorRouter.delete('/delete',passport.authenticate('jwt', { session: false }),validateRole,validator(schemaAuthorDelete),deleteAuthor)
 
 export default authorRouter
