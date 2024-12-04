@@ -7,7 +7,7 @@ export default async(req,res,next) => {
             {online: true}
         )
         
-        return res.redirect('http://localhost:5173/MyTineraryJesusVera/home?token=' + req.token); //Modificar la ruta
+        return res.redirect('http://localhost:5173/?token=' + req.token); //Modificar la ruta
 
     } catch (error) {
        next(error) 

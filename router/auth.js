@@ -15,7 +15,6 @@ import createHash from '../middleware/createHash.js'
 
 
 const routerAuth = Router()
-
 // signIn
 routerAuth.post('/signIn', accountNotExist, isValidatePassword, generateToken, signIn)
 
