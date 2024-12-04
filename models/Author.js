@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import "./User.js"
 
 let collection = "authors";
 
@@ -9,7 +10,7 @@ let schema = new Schema({
         country:{type: String, required: true},
         date:{type: Date, required: true},
         photo:{type: String, required: true},
-        user_id:{type: Schema.Types.ObjectId, required: true},
+        user_id: { type: Schema.Types.ObjectId, ref: 'users', required:true },
         active: {type: Boolean, required: true},
 },
 {
