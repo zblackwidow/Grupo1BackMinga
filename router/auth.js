@@ -6,11 +6,8 @@ import isValidatePassword from '../middleware/isValidatePassword.js'
 import generateToken from '../middleware/generateToken.js'
 import signOut from "../controllers/auth/signOut.js";
 import passport from "../middleware/passport.js";
-//import passportGoogle from "../middleware/passportGoogle.js";
-import {validator} from '../middleware/validator.js'
-import schemaUserCreate from '../schemas/User/create.js'
-import accountExists from '../middleware/accountExist.js'
-import createHash from '../middleware/createHash.js'
+import passportGoogle from "../middleware/passportGoogle.js";
+
 
 
 
@@ -21,16 +18,14 @@ routerAuth.post('/signIn', accountNotExist, isValidatePassword, generateToken, s
 // signOut
 routerAuth.post('/signOut', passport.authenticate('jwt', { session: false }), signOut)
 
-// Ruta para iniciar sesion con google
-/*routerAuth.get(
-    '/signin/google',
-    passportGoogle.authenticate('google', { session: false, scope: ['profile', 'email'] })
-)*/
-/*routerAuth.get(
-    '/signin/google/callback',
-    passportGoogle.authenticate('google', { session: false, failureRedirect: '/login' }),
-    generateToken,
-    signInGoogle
-)*/
+
+// Google 
+routerAuth.get("/signIn/google", passportGoogle.authenticate('google', { scope: ['profile', 'email'], session: false }));
+
+routerAuth.get("/signIn/google/callback", passportGoogle.authenticate('google', { failureRedirect: '/signin', session: false }), generateToken, signInGoogle);
+
+routerAuth.get('/user', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({ user: req.user });
+});
 
 export default routerAuth

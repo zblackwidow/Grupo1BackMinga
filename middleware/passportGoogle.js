@@ -2,37 +2,36 @@ import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import User from "../models/User.js";
 
-export default passport.use(
+passport.use(
     new GoogleStrategy(
         {
-            clientID: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            clientID: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_SECRET,
             callbackURL: process.env.GOOGLE_URI_BACK
         },
         async (accessToken, refreshToken, profile, done) => {
-            console.log("Profile =");
             console.log(profile);
             try {
-                //Buscar si el usuario esta en la Base Datos
-                let user = await User.findOne({ email: profile.emails[0].value })
+                // Buscar si el usuario está en la Base de Datos
+                let user = await User.findOne({ email: profile.emails[0].value });
                 if (!user) {
-                    //si no exite creo uno nuevo
+                    // Si no existe, creo uno nuevo
                     user = new User({
-                        name: profile.displayName,
                         email: profile.emails[0].value,
                         photo: profile.photos[0].value,
                         online: false,
-                        role: "User",
+                        role: 0,
                         password: profile.id
-                    })
-                    await user.save()
+                    });
+                    await user.save();
                 }
 
-                return done(null, user)
-
+                return done(null, user);
             } catch (error) {
-                return done(error, null)
+                return done(error, null);
             }
         }
     )
-)
+);
+
+export default passport;
