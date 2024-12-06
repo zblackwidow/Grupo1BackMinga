@@ -8,13 +8,15 @@ import { schemaReadManga } from "../schemas/Manga/read.js";
 import { schemaCreateManga } from "../schemas/Manga/create.js";
 import { schemaUpdateManga } from "../schemas/Manga/update.js";
 import passport from "../middleware/passport.js";
+import validateRole from "../middleware/validateRole.js";
 
 const router = Router();
 
-router.get("/all", passport.authenticate("jwt", { session: false }), readAll);
+router.get("/all", readAll);
 router.get(
   "/mangaById/:id",
   passport.authenticate("jwt", { session: false }),
+  validateRole,
   validatorParams(schemaReadManga),
   readById
 );
@@ -22,17 +24,20 @@ router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
   validator(schemaCreateManga),
+  validateRole,
   createManga
 );
 router.put(
   "/update",
   passport.authenticate("jwt", { session: false }),
+  validateRole,
   validator(schemaUpdateManga),
   updateManga
 );
 router.delete(
   "/delete",
   passport.authenticate("jwt", { session: false }),
+  validateRole,
   validator(schemaReadManga),
   deleteManga
 );

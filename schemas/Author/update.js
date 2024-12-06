@@ -25,6 +25,9 @@ const schema = joi.object({
   photo: joi.string().uri().messages({
     "string.base": "por favor ingrese un url para la foto",
   }),
+  active: joi.boolean().messages({
+    "boolean.base": "Active must be a boolean value.",
+  }),
 });
 
 export default schema;
