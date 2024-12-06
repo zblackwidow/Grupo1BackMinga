@@ -4,13 +4,13 @@ import signInGoogle from '../controllers/auth/signInGoogle.js'
 import accountNotExist from '../middleware/accountNotExist.js'
 import isValidatePassword from '../middleware/isValidatePassword.js'
 import generateToken from '../middleware/generateToken.js'
-import signOut from "../controllers/auth/signOut.js";
 import passport from "../middleware/passport.js";
 //import passportGoogle from "../middleware/passportGoogle.js";
 import {validator} from '../middleware/validator.js'
 import schemaUserCreate from '../schemas/User/create.js'
 import accountExists from '../middleware/accountExist.js'
 import createHash from '../middleware/createHash.js'
+import signOut from '../controllers/auth/signOut.js'
 
 
 
