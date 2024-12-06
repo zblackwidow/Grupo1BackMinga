@@ -11,7 +11,7 @@ import passport from "../middleware/passport.js";
 
 const router = Router();
 
-router.get("/all", passport.authenticate("jwt", { session: false }), readAll);
+router.get("/all", readAll);
 router.get(
   "/mangaById/:id",
   passport.authenticate("jwt", { session: false }),
