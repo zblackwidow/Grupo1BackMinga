@@ -11,7 +11,7 @@ import passport  from "../middleware/passport.js";
 const router = express.Router();
 
 router.post("/create",passport.authenticate("jwt", { session: false }), validator(createCategorySchema), create); // Crear categoría
-router.get("/all", passport.authenticate("jwt", { session: false }), read); // Leer todas las categorías
+router.get("/all",read); // Leer todas las categorías
 router.put("/update",passport.authenticate("jwt", { session: false }), validator(updateCategorySchema), update); // Actualizar categoría por ID
 router.delete("/delete",passport.authenticate("jwt", { session: false }), validator(deleteCategorySchema), remove); // Eliminar categoría por ID
 
