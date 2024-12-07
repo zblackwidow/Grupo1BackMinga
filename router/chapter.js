@@ -8,21 +8,21 @@ import schemaChapterCreate from '../schemas/Chapter/create.js'
 import schemaChapterDelete from '../schemas/Chapter/delete.js'
 import schemaChapterUpdate from '../schemas/Chapter/update.js'
 import passport from '../middleware/passport.js'
-
+import validateRole from '../middleware/validateRole.js'
 
 const chapterRouter = Router()
 
 // read
-chapterRouter.get('/all',passport.authenticate('jwt', { session: false }), allChapters)
-chapterRouter.get('/id/:id',passport.authenticate('jwt', { session: false }), chapterById)
+chapterRouter.get('/all',passport.authenticate('jwt', { session: false }),validateRole, allChapters)
+chapterRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole, chapterById)
 
 // create
 chapterRouter.post('/create',passport.authenticate('jwt', { session: false }),validator(schemaChapterCreate),create)
 
 // update
-chapterRouter.put('/update',passport.authenticate('jwt', { session: false }),validator(schemaChapterUpdate),updateChapter)
+chapterRouter.put('/update',passport.authenticate('jwt', { session: false }),validateRole,validator(schemaChapterUpdate),updateChapter)
 
 // delete
-chapterRouter.delete('/delete',passport.authenticate('jwt', { session: false }),validator(schemaChapterDelete),deleteChapter)
+chapterRouter.delete('/delete',passport.authenticate('jwt', { session: false }),validateRole,validator(schemaChapterDelete),deleteChapter)
 
 export default chapterRouter

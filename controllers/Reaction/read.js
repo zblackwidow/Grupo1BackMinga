@@ -2,7 +2,7 @@ import Reaction from "../../models/Reaction.js";
 
 const reactionAll = async (req, res, next) => {
   try {
-    let reaction = await Reaction.find();
+    let reaction = await Reaction.find().populate("manga_id", "").populate("author_id", "").populate("company_id", "");
     res.status(200).json({
       success: true,
       message: "Reactions found successfully",
@@ -16,7 +16,7 @@ const reactionAll = async (req, res, next) => {
 const reactionById = async (req, res, next) => {
   try {
     let { id } = req.body
-    let reaction = await Reaction.findById(id);
+    let reaction = await Reaction.findById(id).populate("manga_id", "").populate("author_id", "").populate("company_id", "");
     res.status(200).json({
       success: true,
       message: "Reaction found successfully",

@@ -2,10 +2,10 @@ import bcryptjs from "bcryptjs";
 
 export default async (req, res, next) => {
 
-    let password = req.body.password
+    let passwordBody = req.body.password
     let passwordDB = req.user.password
-
-    let compare = bcryptjs.compareSync(password, passwordDB)
+    let compare = bcryptjs.compareSync(passwordBody, passwordDB)
+    
 
     if (compare) {
         delete req.body.password
