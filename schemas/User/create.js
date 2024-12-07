@@ -15,17 +15,9 @@ const schema = joi.object({
         'string.max': '"password" Password cannot exceed 50 characters',
         'any.required': `"password" is a required field`,
     }),
-    photo: joi.string().required().messages({
+    photo: joi.string().required().uri().messages({
         'any.required': `"photo" is a required field`,
-    }),
-    role: joi
-        .number()
-        .max(3)
-        .min(0)
-        .messages({
-            'number.max': '"role" Only = 0:user 1:author and 2:company can enter',
-            'number.min': '"role" Only = 0:user 1:author and 2:company can enter',
-        })
+    })
 })
 
 export default schema
