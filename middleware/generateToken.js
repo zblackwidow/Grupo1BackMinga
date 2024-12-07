@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
 const generateToken = (req, res, next) => {
-  const email = req.body.email;
-  const role = req.body.role;
+  const email = req.body.email || req.user.email;
+  const role = req.body.role || req.user.role;
 
   const token = jwt.sign(
     { 
