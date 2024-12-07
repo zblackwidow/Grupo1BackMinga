@@ -22,7 +22,7 @@ userRouter.get('/all', passport.authenticate('jwt', { session: false }), allUser
 userRouter.get('/id/:valueID', passport.authenticate('jwt', { session: false }), userByID)
 
 // create
-userRouter.post('/create', validator(schemaUserCreate), accountExists, createHash, generateToken, create)
+userRouter.post('/register', validator(schemaUserCreate), accountExists, createHash, generateToken, create)
 
 // update
 userRouter.put(
