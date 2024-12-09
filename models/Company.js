@@ -8,7 +8,7 @@ let schema = new Schema({
     website: { type: String, required: true },
     description: { type: String, required: true },
     photo: { type: String, required: true },
-    user_id: { type: Schema.Types.ObjectId, required: true, ref: "User" },
+    user_id: { type: Schema.Types.ObjectId, required: true, ref: "users" },
     active: { type: Boolean, default: false }
     },
     {

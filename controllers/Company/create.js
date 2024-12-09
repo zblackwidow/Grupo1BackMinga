@@ -6,11 +6,11 @@ let createCompany = async (req, res, next) => {
         const company = req.body;
          company.active = true
 
-         console.log(company)
         const newCompany = await Company.create(company);
        
         const userId = company.user_id
 
+        console.log(userId)
         const userUpdate= await User.findByIdAndUpdate(
          userId,// Buscar por ID
          {role:2},// Cambiar el rol a 1
