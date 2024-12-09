@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import create from '../controllers/Chapter/create.js'
-import { allChapters, chapterById } from '../controllers/Chapter/read.js'
+import { allChapters, chapterById, chapterByMangaId } from '../controllers/Chapter/read.js'
 import { updateChapter } from '../controllers/Chapter/update.js'
 import { deleteChapter } from '../controllers/Chapter/delete.js'
 import { validator } from '../middleware/validator.js'
@@ -15,6 +15,8 @@ const chapterRouter = Router()
 // read
 chapterRouter.get('/all',passport.authenticate('jwt', { session: false }),validateRole, allChapters)
 chapterRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole, chapterById)
+chapterRouter.get('/idManga/:idManga',passport.authenticate('jwt', { session: false }),validateRole, chapterByMangaId)
+
 
 // create
 chapterRouter.post('/create',passport.authenticate('jwt', { session: false }),validator(schemaChapterCreate),create)

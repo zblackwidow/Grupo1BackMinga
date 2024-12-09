@@ -25,6 +25,9 @@ const schema = joi.object({
   photo: joi.string().uri().messages({
     "string.base": "por favor ingrese un url para la foto",
   }),
+  user_id: joi.objectId().required().messages({
+    "objectId.base": "debe pertenecer al id de un autor valido",
+  }),
   active: joi.boolean().messages({
     "boolean.base": "Active must be a boolean value.",
   }),
