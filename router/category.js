@@ -32,3 +32,4 @@ router.delete("/delete",passport.authenticate("jwt", { session: false }), valida
 
 
 export default router;
+        
