@@ -16,3 +16,4 @@ router.put("/update",passport.authenticate("jwt", { session: false }), validator
 router.delete("/delete",passport.authenticate("jwt", { session: false }), validator(deleteCategorySchema), remove); // Eliminar categoría por ID
 
 export default router;
+        
