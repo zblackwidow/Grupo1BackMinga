@@ -40,8 +40,7 @@ const schemaCompany = joi.object({
             "any.required": "User ID is required."
         }),
     active: joi.boolean()
-        .default(false)
-        .required()
+        .default(true)
         .messages({
             "boolean.base": "Active must be a boolean value.",
             "any.required": "Active status is required."
