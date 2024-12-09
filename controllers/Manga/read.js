@@ -43,7 +43,7 @@ const readAll = async (req, res, next) => {
 
 const readByAuthor = async (req, res, next) => {
   try {
-    const author = req.body.author_id;
+    const author = req.params;
     let mangas = await Manga.find({ author_id: author })
       .populate("author_id", "")
       .populate("company_id", "")
