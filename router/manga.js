@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { readAll, readById } from "../controllers/Manga/read.js";
+import { readAll, readByAuthor, readByCompany, readById } from "../controllers/Manga/read.js";
 import { createManga } from "../controllers/Manga/create.js";
 import { updateManga } from "../controllers/Manga/update.js";
 import { deleteManga } from "../controllers/Manga/delete.js";
@@ -20,6 +20,8 @@ router.get(
   validatorParams(schemaReadManga),
   readById
 );
+router.get("/mangasByAuthor", readByAuthor)
+router.get("/mangasByCompany", readByCompany)
 router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),

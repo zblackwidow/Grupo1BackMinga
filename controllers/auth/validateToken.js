@@ -4,7 +4,8 @@ const validateToken = async (req, res, next) => {
     try {
         const userResponse = { ... req.user.toObject() };
         delete userResponse.password;
-        console.log("pase por aqui");
+      console.log("esotoy en validate token" +" " +{userResponse});
+      
         
 
         return res.status(200).json({
