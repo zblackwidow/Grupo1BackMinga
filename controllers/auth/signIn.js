@@ -12,7 +12,7 @@ export default async (req, res, next) => {
       role: req.user.role,
       photo: req.user.photo,
     };
-console.log(" estoy en sagin" + req.user._id);
+console.log("estoy logeado" + req.user._id);
 
     if (req.user.role === 1) {
    

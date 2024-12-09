@@ -36,6 +36,7 @@ let chapterById = async(req, res, next) => {
 
 }
 
+
 let chapterByMangaId = async(req, res, next) => {
 
         let idManga = req.params.idManga
@@ -53,4 +54,6 @@ let chapterByMangaId = async(req, res, next) => {
 }
 
 
-export {allChapters, chapterById, chapterByMangaId}
+
+
+export { allChapters, chapterById, chapterByMangaId }
