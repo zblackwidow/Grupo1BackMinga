@@ -20,7 +20,7 @@ router.get(
   validatorParams(schemaReadManga),
   readById
 );
-router.get("/mangasByAuthor", readByAuthor)
+router.get("/mangasByAuthor/:author", readByAuthor)
 router.get("/mangasByCompany", readByCompany)
 router.post(
   "/create",
