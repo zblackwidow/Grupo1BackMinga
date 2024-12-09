@@ -31,6 +31,9 @@ const schema = joi.object({
   active: joi.boolean().messages({
     "boolean.base": "Active must be a boolean value.",
   }),
+  user_id: joi.objectId().messages({
+    "objectId.base": "debe pertenecer al id de un usuario valido",
+  })
 });
 
 export default schema;

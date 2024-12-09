@@ -8,6 +8,7 @@ let update = async (req, res, next) => {
             req.body,
             { new: true } 
         )
+         
         console.log(result);
         if (result) {
             return res.status(200).json({
