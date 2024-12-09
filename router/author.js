@@ -14,8 +14,8 @@ import validateRole from '../middleware/validateRole.js'
 const authorRouter = Router()
 
 // read
-authorRouter.get('/all',passport.authenticate('jwt', { session: false }),allAuthors)
-authorRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole,authorById)
+authorRouter.get('/all',passport.authenticate('jwt', { session: false }),validateRole, allAuthors)
+authorRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole, authorById)
 
  // create
 authorRouter.post('/create',create)
