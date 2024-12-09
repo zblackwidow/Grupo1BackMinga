@@ -18,7 +18,7 @@ authorRouter.get('/all',passport.authenticate('jwt', { session: false }),validat
 authorRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole, authorById)
 
  // create
-authorRouter.post('/create',validateRole,create)
+authorRouter.post('/create',create)
 
 // update
 authorRouter.put('/update',passport.authenticate('jwt', { session: false }),validateRole,validator(schemaAuthorUpdate),updateAuthor)
