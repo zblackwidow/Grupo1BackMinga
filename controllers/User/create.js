@@ -9,10 +9,8 @@ let create = async (req, res, next) => {
       
         let all = await User.create(user)
         return res.status(201).json({
-            
             success: true,
             message: 'User registered successfully',
-          
             token: req.token,
             response: all,
         })
