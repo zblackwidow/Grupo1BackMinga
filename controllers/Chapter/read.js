@@ -36,5 +36,19 @@ let chapterById = async(req, res, next) => {
 
 }
 
+let chapterByIdManga = async(req, res, next) => {
 
-export {allChapters, chapterById}
+        try {
+                let idQuery = req.params.id
+                let chapter = await Chapter.findById(idQuery)
+                return res.status(200).json({
+                        response: chapter
+                })
+        } catch (error) {
+                next(error)
+        }
+
+}
+
+
+export {allChapters, chapterById, chapterByIdManga}
