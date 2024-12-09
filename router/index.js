@@ -1,4 +1,5 @@
 import { Router } from "express";
+import 'dotenv/config'
 import companyRouter from "./company.js";
 import userRouter from "./user.js";
 import commentRouter from "./comment.js";

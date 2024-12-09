@@ -4,7 +4,7 @@ import Category from "../Category.js"
 
 const categories = [
   {
-    name: "Shojo",
+    name: "shojo",
     color: "#FFC5C5",
     hover: "#FF99CC",
     description: "Mangas for teenage girls",
@@ -13,7 +13,7 @@ const categories = [
     admin_id: "674a43ddfdefb141b39f0141"
   },
   {
-    name: "Shonen",
+    name: "shonen",
     color: "#33CC33",
     hover: "#66FF66",
     description: "Mangas for teenage boys",
@@ -22,7 +22,7 @@ const categories = [
     admin_id: "674a43ddfdefb141b39f0141"
   },
   {
-    name: "Comics",
+    name: "comics",
     color: "#CCCCCC",
     hover: "#AAAAAA",
     description: "Comics and comics in general",
@@ -31,7 +31,7 @@ const categories = [
     admin_id: "674a43ddfdefb141b39f0141"
   },
   {
-    name: "Seinen",
+    name: "seinen",
     color: "#666666",
     hover: "#999999",
     description: "Manga for young adults",
