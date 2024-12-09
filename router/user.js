@@ -29,7 +29,7 @@ userRouter.put(
     '/update', passport.authenticate('jwt', { session: false }),
     validator(schemaUserEmail),
     validatorAccount,
-    validator(schemaUserUpdate), createHash,
+    validator(schemaUserUpdate),
     update
 )
 
