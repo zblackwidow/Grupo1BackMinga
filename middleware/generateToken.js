@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const generateToken = (req, res, next) => {
   const email = req.body.email || req.user.email;
-  const role = req.body.role || req.user.role;
+  const role = 0
 
   const token = jwt.sign(
     { 
