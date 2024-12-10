@@ -24,7 +24,7 @@ const schema = joi.object({
           "string.uri": "Cada elemento en 'pages' debe ser un URL válido.",
         })
     )
-    .min(1) // Asegura que haya al menos un elemento
+    .min(1)
     .required()
     .messages({
       "array.base": "El campo 'pages' debe ser un arreglo.",
