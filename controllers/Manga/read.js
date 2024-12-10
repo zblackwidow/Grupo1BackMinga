@@ -4,10 +4,13 @@ import Author from "../../models/Author.js";
 const readById = async (req, res, next) => {
   try {
     let { id } = req.params;
+    console.log("id manga " + id);
+    
     let manga = await Manga.findById(id)
       .populate("author_id", "")
       .populate("company_id", "")
       .populate("category_id", "");
+      console.log(manga);
     return res.status(200).json({
       success: true,
       message: "Manga found successfully",

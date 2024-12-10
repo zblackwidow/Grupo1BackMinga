@@ -2,7 +2,7 @@ import Comment from '../../models/Comment.js'
 
 let allComment = async (req, res, next) => {
     try {
-        let resultado = await Comment.find()
+        let resultado = await Comment.find().populate('chapter_id', '').populate('author_id', '').populate('company_id', '')
         if (resultado.length > 0) {
             return res.status(200).json({
                 success: true,

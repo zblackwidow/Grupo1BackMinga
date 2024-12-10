@@ -11,7 +11,7 @@ const generateToken = (req, res, next) => {
     }, 
     process.env.SECRET, 
     {
-        expiresIn: 60 * 60,
+        expiresIn: 60 * 60 * 24,
     }
 );
 req.token = token;
