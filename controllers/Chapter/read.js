@@ -40,11 +40,10 @@ let chapterById = async(req, res, next) => {
 let chapterByMangaId = async(req, res, next) => {
 
         let idManga = req.params.idManga
-        console.log(idManga);
         try {
 
                 let chapter = await Chapter.find({manga_id: idManga})
-                console.log(chapter);
+
                 return res.status(200).json({
                         response: chapter
                 })

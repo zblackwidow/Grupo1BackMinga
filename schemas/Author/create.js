@@ -1,35 +1,43 @@
 import joi from "joi-oid";
 
 const schema = joi.object({
-
-    name: joi.string().required().messages({
-        'string.base':'es requerido el nombre',
+    name: joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
+        "any.required": "Name is required.",
+        "string.empty": "Name cannot be empty.",
+        "string.pattern.base": "Name cannot contain numbers or special characters."
     }),
-    lastName: joi.string().required().messages({
-        'string.base': "es requerido el apellido"
+    lastName: joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
+        'any.required': "Last name is required.",
+        'string.empty': "Last name cannot be empty.",
+        'string.pattern.base': "Last name cannot contain numbers or special characters."
     }),
     city: joi.string().required().messages({
-        'string.base':'verifique que la ciudad ingresada es correcta',
+        'any.required': 'City is required.',
+        'string.empty': "City cannot be empty.",
+        'string.base': 'City must be a string.',
+        'string.min': 'City should have a minimum length of 3 characters.'
     }),
     country: joi.string().messages({
-        'string.base':'verifique que la pais ingresado es correcta',
+        'string.base': 'Country must be a string.',
+        'string.min': 'Country should have a minimum length of 3 characters.',
     }),
     birthday: joi.date().required().messages({
-        'date.base':'verifique la fecha ingresada es ccorrecta',
+        'any.required': 'Birthday is required.',
+        'date.base': 'Please provide a valid date.',
     }),
     photo: joi.string().required().uri().messages({
-        'string.base': "por favor ingrese un url para la foto"
+        'any.required': "Photo URL is required.",
+        'string.empty': "Photo URL cannot be empty.",
+        'string.uri': "Please provide a valid URL for the photo."
     }),
     user_id: joi.objectId().required().messages({
-        'objectId.base':'debe pertenecer al id de un usuario valido',
+        'any.required': 'User ID is required.',
+        'objectId.base': 'Please provide a valid user ID.'
     }),
-    active: joi
-    .boolean() 
-    .messages({
-      'boolean.base': "El campo 'active' debe ser verdadero o falso.",
-      'any.required': "El campo 'active' es obligatorio."
+    active: joi.boolean().messages({
+        'boolean.base': "The 'active' field must be true or false.",
+        'any.required': "The 'active' field is required."
     })
-   
-})
+});
 
-export default schema
+export default schema;
