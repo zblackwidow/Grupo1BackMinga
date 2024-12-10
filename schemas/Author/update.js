@@ -1,38 +1,43 @@
 import joi from "joi-oid";
 
 const schema = joi.object({
-  _id: joi.objectId().required().messages({
-    "objectId.base": "debe pertenecer al id de un autor valido",
+  id: joi.objectId().required().messages({
+    "any.required": "El id es requerido.",
+    "objectId.base": "Debe pertenecer al id de un autor válido."
   }),
-
-  name: joi.string().messages({
-    "string.base": "es requerido el nombre",
+  name: joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
+    "any.required": "El nombre es requerido.",
+    "string.empty": "El nombre no puede estar vacío.",
+    "string.pattern.base": "El nombre no puede contener números ni caracteres especiales."
   }),
-  lastName: joi.string().messages({
-    "string.base": "es requerido el apellido",
+  lastName: joi.string().regex(/^[a-zA-Z\s]+$/).required().messages({
+    "any.required": "El apellido es requerido.",
+    "string.empty": "El apellido no puede estar vacío.",
+    "string.pattern.base": "El apellido no puede contener números ni caracteres especiales."
   }),
-  city: joi.string().messages({
-    "string.base": "verifique que la ciudad ingresada es correcta",
+  city: joi.string().required().messages({
+    "any.required": "La ciudad es requerida.",
+    "string.empty": "La ciudad no puede estar vacía.",
+    "string.base": "Verifique que la ciudad ingresada es correcta."
   }),
   country: joi.string().messages({
-    "string.base": "verifique que la pais ingresado es correcta",
+    "string.base": "Verifique que el país ingresado es correcto.",
   }),
-
-  date: joi.date().messages({
-    "string.base": "verifique la fecha ingresada es ccorrecta",
+  birthday: joi.date().required().messages({
+    "any.required": "La fecha de cumpleaños es requerida.",
+    "date.base": "Verifique que la fecha ingresada es correcta."
   }),
-
-  photo: joi.string().uri().messages({
-    "string.base": "por favor ingrese un url para la foto",
+  photo: joi.string().uri().required().messages({
+    "any.required": "La URL de la foto es requerida.",
+    "string.empty": "La URL de la foto no puede estar vacía.",
+    "string.uri": "Por favor ingrese una URL válida para la foto."
   }),
   user_id: joi.objectId().required().messages({
-    "objectId.base": "debe pertenecer al id de un autor valido",
+    "any.required": "El ID de usuario es requerido.",
+    "objectId.base": "Debe pertenecer al ID de un usuario válido."
   }),
   active: joi.boolean().messages({
-    "boolean.base": "Active must be a boolean value.",
-  }),
-  user_id: joi.objectId().messages({
-    "objectId.base": "debe pertenecer al id de un usuario valido",
+    "boolean.base": "El campo 'active' debe ser verdadero o falso."
   })
 });
 
