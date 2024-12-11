@@ -22,7 +22,7 @@ authorRouter.get('/idUser/:idUser', authorByUserId)
 authorRouter.post('/create',create)
 
 // update
-authorRouter.put('/update',passport.authenticate('jwt', { session: false }),validator(schemaAuthorUpdate),updateAuthor)
+authorRouter.put('/update',passport.authenticate('jwt', { session: false }),updateAuthor)
 
 // delete
 authorRouter.delete('/delete',passport.authenticate('jwt', { session: false }),deleteAuthor)
