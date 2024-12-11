@@ -20,4 +20,13 @@ let readCompany = async (req, res, next) => {
     }
 }
 
-export  {readAllCompany, readCompany};
+let readCompanyByUserId = async (req, res, next) => {
+    try {
+        const company = await Company.find({user_id: req.params.idUser});
+        return res.status(200).json({ message: "Company read successfully", response: company });
+    }
+    catch (error) {
+        next(error);
+    }
+}
+export  {readAllCompany, readCompany, readCompanyByUserId};

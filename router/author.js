@@ -16,7 +16,7 @@ const authorRouter = Router()
 // read
 authorRouter.get('/all',passport.authenticate('jwt', { session: false }),validateRole, allAuthors)
 authorRouter.get('/id/:id',passport.authenticate('jwt', { session: false }),validateRole, authorById)
-authorRouter.get('/idUser/:idUser',passport.authenticate('jwt', { session: false }),validateRole, authorByUserId)
+authorRouter.get('/idUser/:idUser', authorByUserId)
 
  // create
 authorRouter.post('/create',create)

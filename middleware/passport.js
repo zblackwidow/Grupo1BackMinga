@@ -13,21 +13,14 @@ export default passport.use(
             try {
                 let user = await User.findOne({email:jwt_payload.email})
 
-                if (user) {
-                    console.log(user);
-                    console.log("se encontro el usuario");
-                    
+                if (user) {              
                     
                     return done(null,user)
                 }else{
-                    console.log("no se encontro el usuario");
                     
                     return done(null,null)
                 }    
             } catch (error) {
-                console.log(error);
-                console.log("no se encontro el usuario");
-                
                 
                 return done(error,null)
             }

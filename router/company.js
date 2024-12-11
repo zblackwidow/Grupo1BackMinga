@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { readAllCompany, readCompany } from "../controllers/Company/read.js";
+import { readAllCompany, readCompany, readCompanyByUserId } from "../controllers/Company/read.js";
 import createCompany from "../controllers/Company/create.js";
 import deleteCompany from "../controllers/Company/delete.js";
 import { updateCompany } from "../controllers/Company/update.js";
@@ -18,6 +18,8 @@ companyRouter.delete("/delete", validator(schemaDeleteCompany), deleteCompany);
 companyRouter.get("/all", readAllCompany);
 // leer una compania
 companyRouter.get("/read", readCompany);
+
+companyRouter.get("/companyByUserId/:idUser", readCompanyByUserId);
 // actualizar una compania
 companyRouter.put("/update", validator(schemaUPDCompany), updateCompany);
 

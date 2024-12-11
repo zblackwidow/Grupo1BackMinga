@@ -4,13 +4,8 @@ import User from '../../models/User.js'
 let deleteAuthor = async (req, res, next) => {
     try {
         let datos = req.body
-        console.log(req.body+"7");
-        console.log(req.body._id+"8")
-        console.log(req.body.user_id+"9")
-
         let deleteAuthor = await Author.findOneAndDelete({ _id: req.body._id })
 
-        console.log(deleteAuthor+"13");
 
         const userId = req.body.user_id
 

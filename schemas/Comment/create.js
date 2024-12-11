@@ -12,10 +12,8 @@ const schema = joi.object({
     author_id: joi
         .string()
         .regex(/^[0-9a-fA-F]{24}$/)
-        .required()
         .messages({
             'string.pattern.base': '"author_id" You must enter a valid ObjectId',
-            'any.required': `"author_id" is a required field`,
         }),
     company_id: joi
         .string()
