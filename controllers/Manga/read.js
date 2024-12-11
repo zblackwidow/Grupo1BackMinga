@@ -1,5 +1,7 @@
 import Manga from "../../models/Manga.js";
-import Author from "../../models/Author.js";
+import "../../models/Author.js";
+import "../../models/Company.js";
+import "../../models/Category.js";
 
 const readById = async (req, res, next) => {
   try {
@@ -46,7 +48,7 @@ const readAll = async (req, res, next) => {
 
 const readByAuthor = async (req, res, next) => {
   try {
-    const author = req.params;
+    let { author } = req.params;
     let mangas = await Manga.find({ author_id: author })
       .populate("author_id", "")
       .populate("company_id", "")
@@ -57,6 +59,7 @@ const readByAuthor = async (req, res, next) => {
       response: mangas,
     });
   } catch (error) {
+    console.log(error);
     next(error);
     
   }

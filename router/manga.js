@@ -19,11 +19,12 @@ router.get(
   readById
 );
 router.get("/mangasByAuthor/:author", readByAuthor)
+
 router.get("/mangasByCompany", readByCompany)
 router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
-  validator(schemaCreateManga),
+  
   validateRole,
   createManga
 );
