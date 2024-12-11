@@ -36,30 +36,14 @@ let chapterById = async(req, res, next) => {
 
 }
 
-let chapterByIdManga = async(req, res, next) => {
-
-        try {
-                let idQuery = req.params.id
-                let chapter = await Chapter.findById(idQuery)
-                return res.status(200).json({
-                        response: chapter
-                })
-        } catch (error) {
-                next(error)
-        }
-
-}
-
-
 
 let chapterByMangaId = async(req, res, next) => {
 
         let idManga = req.params.idManga
-        console.log(idManga);
         try {
 
                 let chapter = await Chapter.find({manga_id: idManga})
-                console.log(chapter);
+
                 return res.status(200).json({
                         response: chapter
                 })
@@ -69,4 +53,6 @@ let chapterByMangaId = async(req, res, next) => {
 }
 
 
-export {allChapters, chapterById, chapterByMangaId}
+
+
+export { allChapters, chapterById, chapterByMangaId }

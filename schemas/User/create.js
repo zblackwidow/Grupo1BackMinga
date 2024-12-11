@@ -17,7 +17,7 @@ const schema = joi.object({
     }),
     photo: joi.string().required().uri().messages({
         'any.required': `"photo" is a required field`,
-    })
+    }),
 })
 
 export default schema
