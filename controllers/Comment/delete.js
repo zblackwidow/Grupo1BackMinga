@@ -2,9 +2,11 @@ import Comment from '../../models/Comment.js'
 
 let destroy = async (req, res, next) => {
     try {
+        
         let result = await Comment.findOneAndDelete(
-            { _id: req.body._id }
+            { _id: req.params.id }
         )
+        
         if (result) {
             return res.status(200).json({
                 success: true,
@@ -16,7 +18,6 @@ let destroy = async (req, res, next) => {
             return res.status(200).json({
                 success: false,
                 message: `could not delete Comment`,
-                registers_found: `${result._id}`,
                 response: result,
             })
         }

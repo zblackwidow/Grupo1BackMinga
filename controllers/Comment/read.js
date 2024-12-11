@@ -47,4 +47,16 @@ let commentByID = async (req, res, next) => {
     }
 }
 
-export { allComment, commentByID }
+let commentByChapterId = async (req, res, next) => {
+    try {    
+        let idQuery = req.params.id
+        let comment = await Comment.find({ chapter_id: idQuery }).populate('chapter_id', '').populate('author_id', '').populate('company_id', '')
+        return res.status(200).json({
+            response: comment
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
+export { allComment, commentByID, commentByChapterId }

@@ -6,7 +6,6 @@ export default async (req, res, next) => {
   try {
     const user = await User.findOneAndUpdate({ email: req.body.email }, { online: true });
 
-    console.log(user.id)
     const userResponse = {
       id: user._id,
       email: req.user.email,

@@ -40,11 +40,9 @@ let authorById = async(req, res, next) => {
 let authorByUserId = async(req, res, next) => {
 
         let idUser = req.params.idUser
-        console.log(idUser);
         try {
 
                 let author = await Author.find({user_id: idUser})
-                console.log(author);
                 return res.status(200).json({
                         response: author
                 })
