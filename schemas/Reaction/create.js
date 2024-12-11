@@ -5,11 +5,11 @@ export const schemaCreateReaction = joi.object({
         "objectid.base": "Invalid ObjectId",
         "any.required": "Manga ID is required",
     }),
-    author_id: joi.objectId().required().messages({
+    author_id: joi.objectId().messages({
         "objectid.base": "Invalid ObjectId",
         "any.required": "User ID is required",
     }),
-    company_id: joi.objectId().required().messages({
+    company_id: joi.objectId().messages({
         "objectid.base": "Invalid ObjectId",
         "any.required": "Company ID is required",
     }),
