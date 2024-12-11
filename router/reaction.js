@@ -14,8 +14,6 @@ const router = Router();
 
 router.get(
   "/all",
-  passport.authenticate("jwt", { session: false }),
-  validateRole,
   reactionAll
 );
 router.get(
@@ -27,16 +25,11 @@ router.get(
 );
 router.post(
   "/create",
-  passport.authenticate("jwt", { session: false }),
-  validateRole,
-  validator(schemaCreateReaction),
   createReaction
 );
 router.put(
   "/update",
-  passport.authenticate("jwt", { session: false }),
-  validateRole,
-  validator(schemaUpdateReaction),
+  
   updateReaction
 );
 router.delete(

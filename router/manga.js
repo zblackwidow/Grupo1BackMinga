@@ -15,8 +15,6 @@ const router = Router();
 router.get("/all", readAll);
 router.get(
   "/mangaById/:id",
-  passport.authenticate("jwt", { session: false }),
-  validateRole,
   validatorParams(schemaReadManga),
   readById
 );
